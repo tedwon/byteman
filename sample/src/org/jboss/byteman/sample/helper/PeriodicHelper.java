@@ -64,7 +64,7 @@ public class PeriodicHelper extends Helper {
    * possible to override this method in a subclass
    */
 
-  protected void periodicTrigger() {
+  public void periodicTrigger() {
     // do nothing -- rules will override this behaviour
     System.out.println("### PeriodicHelper.periodicTrigger");
   }
@@ -76,7 +76,7 @@ public class PeriodicHelper extends Helper {
    * by attaching a rule to the method.
    */
 
-  protected long getPeriod() {
+  public long getPeriod() {
     System.out.println("### PeriodicHelper.getPeriod: " + DEFAULT_PERIOD);
     return DEFAULT_PERIOD;
   }
@@ -90,7 +90,7 @@ public class PeriodicHelper extends Helper {
    *                      created
    */
 
-  protected long resetPeriod(long initialPeriod) {
+  public long resetPeriod(long initialPeriod) {
     System.out.println("### PeriodicHelper.resetPeriod: " + initialPeriod);
     return initialPeriod;
   }
@@ -134,7 +134,7 @@ public class PeriodicHelper extends Helper {
    * method called in deactivate the helper thread. will only be called when synchronized on
    * PeriodicHelper.class
    */
-  private void shutdown() {
+  public void shutdown() {
     System.out.println("### PeriodicHelper.shutdown");
 
     synchronized (this) {
@@ -153,7 +153,7 @@ public class PeriodicHelper extends Helper {
    * method called by the periodic helper thread to wait between calls to the trigger method
    */
 
-  private boolean doWait(long periodMilliSecs) {
+  public boolean doWait(long periodMilliSecs) {
     System.out.println("### PeriodicHelper.doWait");
 
     synchronized (this) {
@@ -188,7 +188,7 @@ public class PeriodicHelper extends Helper {
    */
   private boolean shutDown;
 
-  private class PeriodicHelperThread extends Thread {
+  public class PeriodicHelperThread extends Thread {
 
     private long periodMilliSecs;
 
